@@ -15,7 +15,8 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        Payment::all();
+        return view
     }
 
     /**
