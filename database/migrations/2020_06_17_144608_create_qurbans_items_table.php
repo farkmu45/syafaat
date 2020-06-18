@@ -18,7 +18,7 @@ class CreateQurbansItemsTable extends Migration
             $table->string('name');
             $table->string('weight');
             $table->string('price');
-            $table->string('behalf');
+            $table->string('photo');
             $table->text('description');
             $table->timestamps();
         });

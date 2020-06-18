@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Qurban;
 use App\QurbanItem;
 use Illuminate\Http\Request;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File as FacadesFile;
 
 class QurbanItemController extends Controller
 {
@@ -15,7 +19,8 @@ class QurbanItemController extends Controller
      */
     public function index()
     {
-        //
+        $qurbanItems = QurbanItem::all();
+        return view('admin.qurbanItems.index', ['title' => 'Qurbans Items', 'qurbanItems' => $qurbanItems]);
     }
 
     /**
@@ -25,7 +30,8 @@ class QurbanItemController extends Controller
      */
     public function create()
     {
-        //
+        $qurbans = Qurban::all();
+        return view('admin.qurbanItems.create', ['title' => 'Add Qurbans Items', 'qurbans' => $qurbans]);
     }
 
     /**
@@ -36,7 +42,25 @@ class QurbanItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        \Tinify\setKey("9krHPgyjMb8GlwyZlzjnTNWMfvSbdSxq");
+        $data = $request->validate([
+            'name' => 'required',
+            'qurban_id' => 'required',
+            'weight' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+            'photo' => 'required|file|between:0,2048|mimes:jpeg,jpg,png',
+        ]);
+
+        $filetype = $request->file('photo')->extension();
+        $source = \Tinify\fromFile($data['photo']);
+        $text = 'optimized' . random_int(100, 100000) . '.' . $filetype;
+        $source->toFile($text);
+        $data['photo'] = Storage::putFile('qurbanItemPhotos', new File(public_path($text)));
+        FacadesFile::delete(public_path($text));
+
+        QurbanItem::create($data);
+        return redirect('/admin/qurbans')->with('status', 'Qurban Item Created');
     }
 
     /**

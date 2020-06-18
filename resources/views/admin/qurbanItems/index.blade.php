@@ -20,7 +20,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($sliders as $s)
+                                @foreach ($qurbanItems as $s)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
                                         <td><img width="60" src="{{asset($s->image)}}" alt=""></td>

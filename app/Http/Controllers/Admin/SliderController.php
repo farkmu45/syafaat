@@ -75,7 +75,7 @@ class SliderController extends Controller
      */
     public function edit(Slider $slider)
     {
-        //
+        return view('admin.slider.edit', ['title' => 'Add Slider', 'slider' => $slider]);
     }
 
     /**
@@ -87,7 +87,23 @@ class SliderController extends Controller
      */
     public function update(Request $request, Slider $slider)
     {
-        //
+        \Tinify\setKey(env('TINFIY_KEY'));
+        $data = $request->validate([
+            'image' => 'file|between:0,2048|mimes:jpeg,jpg,png'
+        ]);
+
+        if ($request['image']) {
+            Storage::delete($slider->image);
+            $filetype = $request->file('image')->extension();
+            $source = \Tinify\fromFile($data['image']);
+            $text = 'optimized' . random_int(100, 100000) . '.' . $filetype;
+            $source->toFile($text);
+            $data['image'] = Storage::putFile('sliderPhotos', new File(public_path($text)));
+            FacadesFile::delete(public_path($text));
+        }
+
+        $slider->update($data);
+        return redirect('/admin/sliders')->with('status', 'Slider Updated');
     }
 
     /**

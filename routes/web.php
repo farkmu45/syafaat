@@ -20,7 +20,7 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/dashboard', 'Admin\AdminController@index');
     Route::resource('/sliders', 'Admin\SliderController');
-    Route::resource('/qurbans', 'Admin\QurbanController');
+    Route::resource('/qurbans', 'Admin\QurbanItemController');
     Route::resource('/payments', 'Admin\PaymentController');
 });
 
