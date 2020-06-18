@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/dashboard', 'Admin\AdminController@index');
+    Route::resource('/sliders', 'Admin\SliderController');
+    Route::resource('/qurbans', 'Admin\QurbanController');
+    Route::resource('/payments', 'Admin\PaymentController');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
