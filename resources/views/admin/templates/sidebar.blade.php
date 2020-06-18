@@ -31,6 +31,11 @@
                         <li><a href="/admin/qurbans/create">Add Qurban</a></li>
                     </ul>
                 </li>
+                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-cart"></i><span class="hide-menu">Order</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="/admin/orders">All Order</a></li>
+                    </ul>
+                </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-credit-card-plus"></i><span class="hide-menu">Payment</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="/admin/payments">All Payment</a></li>

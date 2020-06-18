@@ -22,6 +22,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/sliders', 'Admin\SliderController');
     Route::resource('/qurbans', 'Admin\QurbanItemController');
     Route::resource('/payments', 'Admin\PaymentController');
+    Route::resource('/orders', 'Admin\OrderController');
 });
 
 Auth::routes();

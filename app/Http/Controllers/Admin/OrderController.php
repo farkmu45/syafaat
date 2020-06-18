@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Order;
 use App\Payment;
 use Illuminate\Http\Request;
 
-class PaymentController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,9 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        Payment::all();
+        $order = Order::all();
+        $payment = Payment::all();
+        return view('admin.order.index', ['title' => 'All Order', 'order' => $order, 'payment' => $payment]);
     }
 
     /**
@@ -42,10 +45,10 @@ class PaymentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Payment  $payment
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Payment $payment)
+    public function show(Order $order)
     {
         //
     }
@@ -53,10 +56,10 @@ class PaymentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Payment  $payment
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Payment $payment)
+    public function edit(Order $order)
     {
         //
     }
@@ -65,10 +68,10 @@ class PaymentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Payment  $payment
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Payment $payment)
+    public function update(Request $request, Order $order)
     {
         //
     }
@@ -76,10 +79,10 @@ class PaymentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Payment  $payment
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Payment $payment)
+    public function destroy(Order $order)
     {
         //
     }
