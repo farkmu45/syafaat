@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Syafaat | Konfirmasi</title>
+    <title>Syafaat | Cek Pesanan</title>
     <link rel="icon" href="{{asset('img/favicon.png')}}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
@@ -43,8 +43,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="confirmation_tittle">
-                        <span>Thank you. Your order has been received.</span>
+                    <h2 class="mb-2">Cari informasi pesanan</h2>
+                    <p class="mb-5">Silahkan ketik kode pesanan untuk mengetahui lebih lanjut tentang pesanan qurban anda</p>
+                    <div class="confirmation_title mb-5">
+                        <form action="" method="post">
+                            @csrf
+                            <input type="text" class="form-control" name="" id="" placeholder="Kode Pesanan">
+                        </form>
                     </div>
                 </div>
                 <div class="col-lg-6 col-lx-4">

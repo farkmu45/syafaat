@@ -18,6 +18,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="/qurban">Qurban</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/check">Cek Pesanan</a>
+                                </li>
                             </ul>
                         </div>
                         <div class="hearer_icon d-flex">

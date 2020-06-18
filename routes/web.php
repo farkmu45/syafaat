@@ -34,3 +34,4 @@ Route::get('/qurban/1', 'FrontEndController@show');
 Route::get('/cart', 'FrontEndController@cart');
 Route::get('/checkout', 'FrontEndController@checkout');
 Route::get('/confirmation', 'FrontEndController@confirmation');
+Route::get('/check', 'FrontEndController@check');

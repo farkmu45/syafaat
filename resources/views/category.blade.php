@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>aranoz</title>
+    <title>Syafaat | Qurban</title>
     <link rel="icon" href="{{asset('img/favicon.png')}}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
@@ -174,7 +174,7 @@
                         <div class="col-lg-12">
                             <div class="product_top_bar d-flex justify-content-between align-items-center">
                                 <div class="single_product_menu">
-                                    <p><span>10000 </span> Prodict Found</p>
+                                    <p><span>10000 </span> Qurban ditemukan</p>
                                 </div>
                                 <div class="single_product_menu d-flex">
                                     <h5>short by : </h5>
@@ -183,16 +183,6 @@
                                         <option value="1">price</option>
                                         <option value="2">product</option>
                                     </select>
-                                </div>
-                                <div class="single_product_menu d-flex">
-                                    <h5>show :</h5>
-                                    <div class="top_pageniation">
-                                        <ul>
-                                            <li>1</li>
-                                            <li>2</li>
-                                            <li>3</li>
-                                        </ul>
-                                    </div>
                                 </div>
                                 <div class="single_product_menu d-flex">
                                     <div class="input-group">
@@ -211,7 +201,7 @@
                     <div class="row align-items-center latest_product_inner">
                         <div class="col-lg-4 col-sm-6">
                             <div class="single_product_item">
-                                <img src="{{asset('img/product/product_1.png')}}" alt="">
+                                <a href="/qurban/1"><img src="{{asset('img/product/product_1.png')}}" alt=""></a>
                                 <div class="single_product_text">
                                     <h4>Quartz Belt Watch</h4>
                                     <h3>$150.00</h3>
