@@ -30,4 +30,14 @@ class FrontEndController extends Controller
     {
         return view('checkout');
     }
+
+    public function confirmation()
+    {
+        return view('confirmation');
+    }
+
+    public function check()
+    {
+        return view('check');
+    }
 }

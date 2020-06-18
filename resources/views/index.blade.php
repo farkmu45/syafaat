@@ -152,40 +152,47 @@
                     </div>
                 </div>
             </div>
-            <div class="row align-items-center justify-content-between">
-                <div class="col-lg-12">
-                    <div class="best_product_slider owl-carousel">
-                        <div class="single_product_item">
-                            <img src="{{asset('cow.png')}}" style="height: 260px; width: 95%; object-fit:scale-down;" alt="">
-                            <div class="single_product_text">
-                                <h4>Quartz Belt Watch</h4>
-                                <h3>$150.00</h3>
-                            </div>
-                        </div>
-                        <div class="single_product_item">
-                            <img src="{{asset('sheep.png')}}" style="height: 260px; width: 95%; object-fit:scale-down;" alt="">
-                            <div class="single_product_text">
-                                <h4>Quartz Belt Watch</h4>
-                                <h3>$150.00</h3>
-                            </div>
-                        </div>
-                        <div class="single_product_item">
-                            <img src="{{asset('sheep1.png')}}" style="height: 260px; width: 95%; object-fit:scale-down;" alt="">
-                            <div class="single_product_text">
-                                <h4>Quartz Belt Watch</h4>
-                                <h3>$150.00</h3>
-                            </div>
-                        </div>
-                        <div class="single_product_item">
-                            <img src="{{asset('camel.png')}}" style="height: 260px; width: 95%; object-fit:scale-down;" alt="">
-                            <div class="single_product_text">
-                                <h4>Quartz Belt Watch</h4>
-                                <h3>$150.00</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                  <div class="row align-items-center justify-content-between">
+        <div class="col-lg-12">
+          <div class="best_product_slider owl-carousel">
+            <div class="single_product_item">
+              <a href=""><img src="{{asset('img/product/product_1.png')}}" alt=""></a>
+              <div class="single_product_text">
+                <h4>Quartz Belt Watch</h4>
+                <h3>$150.00</h3>
+              </div>
             </div>
+            <div class="single_product_item">
+              <img src="{{asset('img/product/product_2.png')}}" alt="">
+              <div class="single_product_text">
+                <h4>Quartz Belt Watch</h4>
+                <h3>$150.00</h3>
+              </div>
+            </div>
+            <div class="single_product_item">
+              <img src="{{asset('img/product/product_3.png')}}" alt="">
+              <div class="single_product_text">
+                <h4>Quartz Belt Watch</h4>
+                <h3>$150.00</h3>
+              </div>
+            </div>
+            <div class="single_product_item">
+              <img src="{{asset('img/product/product_4.png')}}" alt="">
+              <div class="single_product_text">
+                <h4>Quartz Belt Watch</h4>
+                <h3>$150.00</h3>
+              </div>
+            </div>
+            <div class="single_product_item">
+              <img src="{{asset('img/product/product_5.png')}}" alt="">
+              <div class="single_product_text">
+                <h4>Quartz Belt Watch</h4>
+                <h3>$150.00</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
         </div>
     </section>
 
@@ -266,7 +273,7 @@
       autoplayHoverPause: true,
       autoplayTimeout: 3000,
       nav: true,
-      navText: ["next", "previous"],
+      navText: ["sebelumnya", "selanjutnya"],
       responsive: {
         0: {
           margin: 15,
