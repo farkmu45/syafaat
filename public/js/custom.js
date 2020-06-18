@@ -136,6 +136,7 @@
     function pad2(number) {
       return (number < 10 ? '0' : '') + number
     }
+
     var carousel = e.relatedTarget;
     $('.slider-counter').text(pad2(carousel.current()));
 
@@ -147,7 +148,7 @@
     autoplayHoverPause: true,
     autoplayTimeout: 5000,
     nav: true,
-    navText: ["next", "previous"],
+    navText: ["sebelumnya", "selanjutnya"],
     smartSpeed: 1000,
     responsive: {
       0: {
