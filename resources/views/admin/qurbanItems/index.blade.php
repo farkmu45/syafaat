@@ -15,7 +15,12 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Image</th>
+                                    <th>Foto</th>
+                                    <th>Jenis</th>
+                                    <th>Judul</th>
+                                    <th>Harga</th>
+                                    <th>Berat</th>
+                                    <th>Deskripsi</th>
                                     <th>Option</th>
                                 </tr>
                             </thead>
@@ -23,7 +28,12 @@
                                 @foreach ($qurbanItems as $s)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td><img width="60" src="{{asset($s->image)}}" alt=""></td>
+                                        <td><img width="60" src="{{asset($s->photo)}}" alt=""></td>
+                                        <td>{{$s->qurban->name}}</td>
+                                        <td>{{$s->name}}</td>
+                                        <td>{{$s->price}}</td>
+                                        <td>{{$s->weight}}</td>
+                                        <td>{{$s->description}}</td>
                                         <td>
                                             <a href="/admin/sliders/{{$s->id}}/edit" class="btn btn-info"><i class="ti-pencil"></i></a>
                                             <form action="/admin/sliders/{{$s->id}}" method="POST" class="d-inline">
