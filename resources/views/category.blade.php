@@ -47,6 +47,9 @@
                             </div>
                             <div class="widgets_inner">
                                 <ul class="list">
+                                    <li>
+                                        <a href="/qurban">Semua</a><span>{{$count}}</span>
+                                    </li>
                                     @foreach ($qurban as $qurban)
                                     <li>
                                         <form id="{{$qurban->id}}" action="/qurban" method="get">
@@ -112,7 +115,7 @@
                         @foreach ($list as $qurban)
                         <div class="col-lg-4 col-sm-6">
                             <div class="single_product_item">
-                                <a href="/qurban/{{$qurban->id}}"><img src="{{asset($qurban->photo)}}" alt=""></a>
+                                <a href="/qurban/{{$qurban->id}}"><img src="{{asset($qurban->photo)}}" alt="" style="width: 262px; height:190px; object-fit: scale-down"></a>
                                 <div class="single_product_text">
                                     <h4>{{$qurban->name}}</h4>
                                     <h3>{{"Rp " . number_format($qurban->price,0,',','.')}}</h3>
@@ -152,42 +155,12 @@
     <!-- easing js -->
     <script src="{{asset('js/jquery.magnific-popup.js')}}"></script>
     <!-- swiper js -->
-    <script src="{{asset('js/swiper.min.js')}}"></script>
-    <!-- swiper js -->
     <script src="{{asset('js/masonry.pkgd.js')}}"></script>
     <!-- particles js -->
     <script src="{{asset('js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('js/jquery.nice-select.min.js')}}"></script>
-    <!-- slick js -->
-    <script src="{{asset('js/slick.min.js')}}"></script>
-    <script src="{{asset('js/jquery.counterup.min.js')}}"></script>
-    <script src="{{asset('js/waypoints.min.js')}}"></script>
-    <script src="{{asset('js/contact.js')}}"></script>
-    <script src="{{asset('js/jquery.ajaxchimp.min.js')}}"></script>
-    <script src="{{asset('js/jquery.form.js')}}"></script>
-    <script src="{{asset('js/jquery.validate.min.js')}}"></script>
-    <script src="{{asset('js/mail-script.js')}}"></script>
-    <script src="{{asset('js/stellar.js')}}"></script>
-    <script src="{{asset('js/price_rangs.js')}}"></script>
     <!-- custom js -->
     <script src="{{asset('js/custom.js')}}"></script>
-    <script>
-        var window = window
-        $("#price").on("submit", function (event) {
-            event.preventDefault(); //prevent submission
-            let formData = $(this).serialize(); //outputs firstname=blah&lastname=moreblah
-
-            let fullUrl = "{{url()->full()}}";
-            let queryPart = fullUrl.split("?")[1]; //here you have country=usa&state=ny
-
-            let finalForm = queryPart + "&" + formData;
-            window.location = 'qurban?' + finalForm;
-        });
-
-        $('#btn_price').on('click', function (event) {
-            $("#price").submit()
-        })
-    </script>
 </body>
 
 </html>

@@ -58,6 +58,7 @@
                             <form action="/cart/" method="post" id="edit">
                                     @csrf
                                     @method('PATCH')
+                                    <input type="hidden" id="checkout" name="checkout" value="false">
                             @foreach ($data as $key => $qurban)
                             <tr>
                                 <td>
@@ -77,11 +78,11 @@
                                 
                                     <td>
                                         <div class="product_count">
-                                            <input class="input-number" name="quantity[]" type="number" value="{{$qurban->quantity}}">
+                                            <input class="input-number" name="quantity[]" required type="number" value="{{$qurban->quantity}}">
                                         </div>
                                     </td>
                                     <td>
-                                    <input class="form-control" type="text" name="behalf_of[]" value="{{$qurban->behalf_of}}" placeholder="" id="">
+                                    <input class="form-control" type="text" name="behalf_of[]" required value="{{$qurban->behalf_of}}" placeholder="" id="">
                                     </td>
                                 
                                 <td>
@@ -108,9 +109,9 @@
                         </tbody>
                     </table>
                     <div class="checkout_btn_inner float-right">
-                        <a class="btn_1" href="javascript:{}" onclick="document.getElementById('edit').submit()">Perbarui Keranjang</a>
+                        <a class="btn_1" href="javascript:{}" onclick="document.getElementById('edit').submit(); ">Perbarui Keranjang</a>
                         <a class=" btn_1" href="/qurban">Lanjut qurban</a>
-                        <a class="btn_1 checkout_btn_1" href="/checkout">Proses ke pembayaran</a>
+                        <a class="btn_1 checkout_btn_1" href="javascript:{}" onclick="document.getElementById('checkout').setAttribute('value', 'true');document.getElementById('edit').submit()">Proses ke pembayaran</a>
                     </div>
                 </div>
                  @endif

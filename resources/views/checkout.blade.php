@@ -67,7 +67,7 @@
                                 <li>
                                     <a href="#">Item
                                         <span>Total</span>
-                                    </a>
+                                    </a>    
                                 </li>
 
                                 @foreach ($data as $qurban)      
@@ -86,11 +86,6 @@
                                     </a>
                                 </li>
                             </ul>
-                            <div class="creat_account">
-                                <input type="checkbox" id="f-option4" name="selector" />
-                                <label for="f-option4">I’ve read and accept the </label>
-                                <a href="#">terms & conditions*</a>
-                            </div>
                             <a class="btn_3" href="javascript:{}"
                                                 onclick="document.getElementById('checkout').submit();">Proses Pembayaran</a>
                         </div>

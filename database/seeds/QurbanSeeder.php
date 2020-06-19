@@ -19,5 +19,13 @@ class QurbanSeeder extends Seeder
         Qurban::create([
             'name' => 'Kambing'
         ]);
+
+        Qurban::create([
+            'name' => 'Unta'
+        ]);
+
+        Qurban::create([
+            'name' => 'Domba'
+        ]);
     }
 }

@@ -1,5 +1,5 @@
-    <footer class="footer_part">
-        <div class="container">
+    <footer class="footer_part" style="padding: 0 !important;">
+        {{-- <div class="container">
             <div class="row justify-content-around">
                 <div class="col-sm-6 col-lg-2">
                     <div class="single_footer_part">
@@ -47,8 +47,8 @@
                 </div>
             </div>
             
-        </div>
-        <div class="copyright_part">
+        </div> --}}
+        <div class="copyright_part" style="margin: 20px 0 !important">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">

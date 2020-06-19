@@ -15,7 +15,8 @@ class FrontEndController extends Controller
 {
     public function index()
     {
-        return view('index')->withList(QurbanItem::all());
+        $slider = Slider::all();
+        return view('index')->withList(QurbanItem::all())->withSlider($slider);
     }
 
     public function list(Request $request)
@@ -24,11 +25,13 @@ class FrontEndController extends Controller
 
         $list = QurbanItem::where('id', '!=', 0);
 
+        $countItem = QurbanItem::all()->count();
+
         if ($request->has('type')) {
             $list->where('qurban_id', $request->type);
         }
 
-        return view('category')->withList($list->paginate(9))->withQurban($qurban);
+        return view('category')->withList($list->paginate(9))->withQurban($qurban)->withCount($countItem);
     }
 
     public function show(QurbanItem $qurban)
@@ -155,6 +158,7 @@ class FrontEndController extends Controller
     public function saveToCart(Request $request)
     {
         // return Cookie::queue(Cookie::forget('qurban'));
+
         $temp = [];
 
         if (Cookie::get('qurban')) {
@@ -188,7 +192,8 @@ class FrontEndController extends Controller
         }
 
         Cookie::queue('qurban', $temp);
-        return redirect('/cart');
+
+        return redirect('cart');
     }
 
     public function editCart(Request $request)
@@ -206,6 +211,9 @@ class FrontEndController extends Controller
         }
         
         Cookie::queue('qurban', json_encode($data));
+        if ($request->checkout) {
+            return redirect('/checkout');
+        }
         return redirect()->back();
     }
     

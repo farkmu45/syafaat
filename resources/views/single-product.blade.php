@@ -98,6 +98,43 @@
           <div class="table-responsive">
             <table class="table">
               <tbody>
+
+                <tr>
+                  <td>
+                    <h5>Nama</h5>
+                  </td>
+                  <td>
+                  <h5>{{$qurban->name}}</h5>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <h5>Jenis</h5>
+                  </td>
+                  <td>
+                  <h5>{{$qurban->qurban->name}}</h5>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <h5>Berat</h5>
+                  </td>
+                  <td>
+                  <h5>{{$qurban->weight}} kg</h5>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <h5>Harga per ekor</h5>
+                  </td>
+                  <td>
+                  <h5>{{"Rp " . number_format($qurban->price,0,',','.')}}</h5>
+                  </td>
+                </tr>
+
               </tbody>
             </table>
           </div>
@@ -120,34 +157,7 @@
       <div class="row align-items-center justify-content-between">
         <div class="col-lg-12">
           <div class="best_product_slider owl-carousel">
-            <div class="single_product_item">
-              <a href=""><img src="{{asset('img/product/product_1.png')}}" alt=""></a>
-              <div class="single_product_text">
-                <h4>Quartz Belt Watch</h4>
-                <h3>$150.00</h3>
-              </div>
-            </div>
-            <div class="single_product_item">
-              <img src="{{asset('img/product/product_2.png')}}" alt="">
-              <div class="single_product_text">
-                <h4>Quartz Belt Watch</h4>
-                <h3>$150.00</h3>
-              </div>
-            </div>
-            <div class="single_product_item">
-              <img src="{{asset('img/product/product_3.png')}}" alt="">
-              <div class="single_product_text">
-                <h4>Quartz Belt Watch</h4>
-                <h3>$150.00</h3>
-              </div>
-            </div>
-            <div class="single_product_item">
-              <img src="{{asset('img/product/product_4.png')}}" alt="">
-              <div class="single_product_text">
-                <h4>Quartz Belt Watch</h4>
-                <h3>$150.00</h3>
-              </div>
-            </div>
+
             <div class="single_product_item">
               <img src="{{asset('img/product/product_5.png')}}" alt="">
               <div class="single_product_text">
@@ -155,6 +165,7 @@
                 <h3>$150.00</h3>
               </div>
             </div>
+
           </div>
         </div>
       </div>
