@@ -21,7 +21,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/dashboard', 'Admin\AdminController@index');
     Route::resource('/sliders', 'Admin\SliderController');
     Route::resource('/qurbans', 'Admin\QurbanItemController');
-    Route::resource('/payments', 'Admin\PaymentController');
+    Route::resource('/payments', 'Admin\PaymentController')->except(['show']);
 });
 
 Auth::routes();
@@ -30,8 +30,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'FrontEndController@index');
 
 Route::get('/qurban', 'FrontEndController@list');
-Route::get('/qurban/1', 'FrontEndController@show');
+Route::get('/qurban/{qurban}', 'FrontEndController@show');
+Route::post('/qurban/{qurban}', 'FrontEndController@saveToCart');
+
 Route::get('/cart', 'FrontEndController@cart');
+Route::patch('/cart', 'FrontEndController@editCart');
+Route::delete('/cart/{cart_id}', 'FrontEndController@delete');
+
 Route::get('/checkout', 'FrontEndController@checkout');
+Route::post('/checkout', 'FrontEndController@processCheckout');
+
 Route::get('/confirmation', 'FrontEndController@confirmation');
 Route::get('/check', 'FrontEndController@check');

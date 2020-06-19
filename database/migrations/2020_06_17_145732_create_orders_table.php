@@ -17,11 +17,11 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('behalf');
             $table->string('username');
-            $table->string('email')->unique();
-            $table->string('phone', 15)->uniqie();
-            $table->string('total', 15)->uniqie();
-            $table->string('status');
-            $table->string('code');
+            $table->string('email');
+            $table->string('phone', 15);
+            $table->string('total', 15);
+            $table->enum('status', [1, 2, 3])->default(1);
+            $table->string('code', 7)->unique();
             $table->timestamps();
         });
     }

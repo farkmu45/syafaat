@@ -38,69 +38,51 @@
             <div class="billing_details">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h3>Billing Details</h3>
-                        <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+                        <h3>Detail Pembayaran</h3>
+                        <form class="row contact_form" id="checkout" action="/checkout" method="post" novalidate="novalidate">
+                            @csrf
                             <div class="col-md-12 form-group">
-                                <input type="text" name="first_name" placeholder="Nama Lengkap" required="" class="form-control">
+                            <input type="text" name="username" placeholder="Nama Lengkap" required="" class="form-control" value="{{old('user_name')}}">
                             </div>
                             <div class="col-md-6 form-group">
-                                <input type="email" name="first_name" placeholder="Email" required="" class="form-control">
+                            <input type="email" name="email" placeholder="Email" required="" class="form-control" value="{{old('user_email')}}">
                             </div>
                             <div class="col-md-6 form-group">
-                                <input type="text" name="first_name" placeholder="Nomor Handphone" required="" class="form-control">
+                            <input type="text" name="phone" placeholder="Nomor Handphone" required="" class="form-control" value="{{old('user_phone')}}">
                             </div>
                             <div class="col-md-12 form-group">
-                                <select class="country_select">
+                                <select class="country_select" name="payment_id">
                                     <option value="">Metode Pembayaran</option>
-                                    <option value="2">BRI</option>
-                                    <option value="3">BNI</option>
-                                    <option value="4">MANDIRI</option>
+                                    @foreach ($payments as $payment)
+                                <option value="{{$payment->id}}">{{$payment->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </form>
                     </div>
                     <div class="col-lg-12">
                         <div class="order_box">
-                            <h2>Your Order</h2>
+                            <h2>Qurban Anda</h2>
                             <ul class="list">
                                 <li>
-                                    <a href="#">Product
+                                    <a href="#">Item
                                         <span>Total</span>
                                     </a>
                                 </li>
+
+                                @foreach ($data as $qurban)      
                                 <li>
-                                    <a href="#">Fresh Blackberry
-                                        <span class="middle">x 02</span>
-                                        <span class="last">$720.00</span>
+                                    <a href="#">{{$qurban->name}}
+                                    <span class="middle">x {{$qurban->quantity}}</span>
+                                        <span class="last">{{"Rp " . number_format($qurban->price,0,',','.')}}</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#">Fresh Tomatoes
-                                        <span class="middle">x 02</span>
-                                        <span class="last">$720.00</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Fresh Brocoli
-                                        <span class="middle">x 02</span>
-                                        <span class="last">$720.00</span>
-                                    </a>
-                                </li>
+                                @endforeach
                             </ul>
                             <ul class="list list_2">
                                 <li>
-                                    <a href="#">Subtotal
-                                        <span>$2160.00</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Shipping
-                                        <span>Flat rate: $50.00</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Total
-                                        <span>$2210.00</span>
+                                    <a href="#">Total Harga
+                                    <span>{{"Rp " . number_format($total,0,',','.')}}</span>
                                     </a>
                                 </li>
                             </ul>
@@ -109,7 +91,8 @@
                                 <label for="f-option4">I’ve read and accept the </label>
                                 <a href="#">terms & conditions*</a>
                             </div>
-                            <a class="btn_3" href="#">Proceed to Paypal</a>
+                            <a class="btn_3" href="javascript:{}"
+                                                onclick="document.getElementById('checkout').submit();">Proses Pembayaran</a>
                         </div>
                     </div>
                 </div>

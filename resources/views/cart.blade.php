@@ -37,64 +37,83 @@
     <section class="cart_area padding_top">
         <div class="container">
             <div class="cart_inner">
+                @if (Cookie::get('qurban') == null)
+                <h2>Anda belum menambahkan item ke keranjang</h2>
+                @else
+                
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
+                               
                                 <th scope="col">Qurban</th>
                                 <th scope="col">Harga</th>
                                 <th scope="col">Jumlah</th>
                                 <th scope="col">Atas Nama</th>
                                 <th scope="col">Total</th>
+                                <th scope="col">Opsi</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <form action="/cart/" method="post" id="edit">
+                                    @csrf
+                                    @method('PATCH')
+                            @foreach ($data as $key => $qurban)
                             <tr>
                                 <td>
                                     <div class="media">
                                         <div class="d-flex">
-                                            <img src="{{asset('img/product/single-product/cart-1.jpg')}}" alt="" />
+                                            <img src="{{asset($qurban->photo)}}"
+                                                style="width:146px; height:99px; object-fit:scale-down" alt="" />
                                         </div>
                                         <div class="media-body">
-                                            <p>Minimalistic shop for multipurpose use</p>
+                                            <p>{{$qurban->name}}</p>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <h5>$360.00</h5>
+                                    <h5>{{"Rp " . number_format($qurban->price,0,',','.')}}</h5>
+                                </td>
+                                
+                                    <td>
+                                        <div class="product_count">
+                                            <input class="input-number" name="quantity[]" type="number" value="{{$qurban->quantity}}">
+                                        </div>
+                                    </td>
+                                    <td>
+                                    <input class="form-control" type="text" name="behalf_of[]" value="{{$qurban->behalf_of}}" placeholder="" id="">
+                                    </td>
+                                
+                                <td>
+                                    <h5>{{"Rp " . number_format($qurban->total_price,0,',','.')}}</h5>
                                 </td>
                                 <td>
-                                    <div class="product_count">
-                                        <span class="input-number-decrement"> <i class="ti-angle-down"></i></span>
-                                        <input class="input-number" type="text" value="1" min="0" max="10">
-                                        <span class="input-number-increment"> <i class="ti-angle-up"></i></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <input class="form-control" type="text" name="" placeholder="" id="">
-                                </td>
-                                <td>
-                                    <h5>$720.00</h5>
+                                <a href="/cart?order_id={{$key}}"><i class="ti-trash"></i></a>
                                 </td>
                             </tr>
+                            @endforeach
+                        </form>
                             <tr>
                                 <td></td>
                                 <td></td>
+                                <td></td>
                                 <td>
-                                    <h5>Subtotal</h5>
+                                    <h5>Harga Total</h5>
                                 </td>
                                 <td>
-                                    <h5>$2160.00</h5>
+                                    <h5>{{"Rp " . number_format($total,0,',','.')}}</h5>
                                 </td>
                             </tr>
+
                         </tbody>
                     </table>
                     <div class="checkout_btn_inner float-right">
-                        <a class="btn_1" href="/cart">Perbarui Keranjang</a>
-                        <a class="btn_1" href="/qurban">Lanjut qurban</a>
+                        <a class="btn_1" href="javascript:{}" onclick="document.getElementById('edit').submit()">Perbarui Keranjang</a>
+                        <a class=" btn_1" href="/qurban">Lanjut qurban</a>
                         <a class="btn_1 checkout_btn_1" href="/checkout">Proses ke pembayaran</a>
                     </div>
                 </div>
+                 @endif
             </div>
     </section>
     <!--================End Cart Area =================-->

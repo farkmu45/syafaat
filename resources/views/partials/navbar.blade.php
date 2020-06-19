@@ -36,8 +36,14 @@
         </div>
     </header>
 
+    
     <style>
         .main_menu .cart i::after {
-            content: '1' !important;
+
+            @if (Cookie::get('qurban') !== null)
+            content: '{{ count(json_decode(Cookie::get('qurban'))) }}' !important;
+            @else
+            content: '0' !important;
+            @endif
         }
     </style>

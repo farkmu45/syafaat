@@ -12,14 +12,15 @@
                 <h4 class="m-b-0 text-white">Form {{$title}}</h4>
                 </div>
                 <div class="card-body">
-                    <form action="/admin/payments" method="POST">
+                <form action="/admin/payments/{{$payment->id}}"  method="POST">
+                        @method('PATCH')
                         @csrf
                         <div class="form-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group @error('name') has-danger @enderror">
                                         <label class="control-label">Nama Bank</label>
-                                        <input type="text" name="name" class="form-control @error('name') form-control-danger @enderror" placeholder="" value="{{ old('name') }}">
+                                        <input type="text" name="name" class="form-control @error('name') form-control-danger @enderror" placeholder="" value="{{ $payment->name }}">
                                         @error('name')
                                             <small class="form-control-feedback">{{$message}}</small>
                                         @enderror
@@ -28,7 +29,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group @error('account_number') has-danger @enderror">
                                         <label class="control-label">Nomor Rekening</label>
-                                        <input type="text" id="firstName" name="account_number" class="form-control @error('account_number') form-control-danger @enderror" placeholder="" value="{{ old('account_number') }}">
+                                        <input type="text" id="firstName" name="account_number" class="form-control @error('account_number') form-control-danger @enderror" placeholder="" value="{{ $payment->account_number }}">
                                         @error('account_number')
                                             <small class="form-control-feedback">{{$message}}</small>
                                         @enderror

@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>aranoz</title>
+<title>Syafaat | {{$qurban->name}}</title>
   <link rel="icon" href="{{asset('img/favicon.png')}}">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
@@ -35,39 +35,41 @@
     <div class="container">
       <div class="row s_product_inner justify-content-between">
         <div class="col-lg-7 col-xl-7">
-          <img src="camel.png')}}" style="height: 600px; width: 90%; object-fit: scale-down;" />
+        <img src="{{asset($qurban->photo)}}" style="height: 600px; width: 90%; object-fit: scale-down;" />
         </div>
         <div class="col-lg-5 col-xl-4">
           <div class="s_product_text">
-            <h5>sebelumnya <span>|</span> selanjutnya</h5>
-            <h3>Sapi Tipe A</h3>
-            <h2>20.000</h2>
+            <h3>{{$qurban->name}}</h3>
             <ul class="list">
               <li>
                 <a class="active" href="#">
-                  <span>Varian</span> : A</a>
+                  <span>Kategori</span> : {{$qurban->qurban->name}}</a>
               </li>
               <li>
                 <a href="#">
-                  <span>Berat</span> : 250 kg</a>
+                  <span>Berat</span> : {{$qurban->weight}} kg</a>
               </li>
               <li>
-                <span>In Stock</span>
-              </li>
-              <li>
-                <h5 style="margin-top: 200px; margin-bottom: 10px !important;">Total Harga</h5>
-                <h1>20.000</h1>
+                <h5 style="margin-top: 200px; margin-bottom: 10px !important;">Harga</h5>
+                <h1>{{"Rp " . number_format($qurban->price,0,',','.')}}</h1>
               </li>
             </ul>
+              <form action="/qurban/{{$qurban->id}}" method="post">
             <div class="card_area d-flex justify-content-between align-items-center">
               <div class="product_count">
                 <span class="inumber-decrement"> <i class="ti-minus"></i></span>
-                <input class="input-number" type="text" value="1" min="0" max="10">
+                <input class="input-number" name="quantity" type="text" value="1" min="0" max="10">
                 <span class="number-increment"> <i class="ti-plus"></i></span>
               </div>
-              <a href="#" class="btn_3">+ keranjang</a>
-              <a href="#" class="like_us"> <i class="ti-heart"></i> </a>
-            </div>
+                @csrf
+              <input type="hidden" name="name" value="{{$qurban->name}}">
+              <input type="hidden" name="qurban_id" value="{{$qurban->id}}">
+              <input type="hidden" name="qurban_price" value="{{$qurban->price}}">
+              <input type="hidden" name="photo" value="{{$qurban->photo}}">
+                <button class="btn_3">+ keranjang</button>
+              </div>
+            </form>
+
           </div>
         </div>
       </div>
@@ -81,113 +83,21 @@
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
           <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-            aria-selected="true">Description</a>
+            aria-selected="true">Deskripsi</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-            aria-selected="false">Specification</a>
+            aria-selected="false">Spesifikasi</a>
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-          <p>
-            Beryl Cook is one of Britain’s most talented and amusing artists
-            .Beryl’s pictures feature women of all shapes and sizes enjoying
-            themselves .Born between the two world wars, Beryl Cook eventually
-            left Kendrick School in Reading at the age of 15, where she went
-            to secretarial school and then into an insurance office. After
-            moving to London and then Hampton, she eventually married her next
-            door neighbour from Reading, John Cook. He was an officer in the
-            Merchant Navy and after he left the sea in 1956, they bought a pub
-            for a year before John took a job in Southern Rhodesia with a
-            motor company. Beryl bought their young son a box of watercolours,
-            and when showing him how to use it, she decided that she herself
-            quite enjoyed painting. John subsequently bought her a child’s
-            painting set for her birthday and it was with this that she
-            produced her first significant work, a half-length portrait of a
-            dark-skinned lady with a vacant expression and large drooping
-            breasts. It was aptly named ‘Hangover’ by Beryl’s husband and
-          </p>
-          <p>
-            It is often frustrating to attempt to plan meals that are designed
-            for one. Despite this fact, we are seeing more and more recipe
-            books and Internet websites that are dedicated to the act of
-            cooking for one. Divorce and the death of spouses or grown
-            children leaving for college are all reasons that someone
-            accustomed to cooking for more than one would suddenly need to
-            learn how to adjust all the cooking practices utilized before into
-            a streamlined plan of cooking that is more efficient for one
-            person creating less
-          </p>
+            {!!$qurban->description!!}
         </div>
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
           <div class="table-responsive">
             <table class="table">
               <tbody>
-                <tr>
-                  <td>
-                    <h5>Width</h5>
-                  </td>
-                  <td>
-                    <h5>128mm</h5>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h5>Height</h5>
-                  </td>
-                  <td>
-                    <h5>508mm</h5>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h5>Depth</h5>
-                  </td>
-                  <td>
-                    <h5>85mm</h5>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h5>Weight</h5>
-                  </td>
-                  <td>
-                    <h5>52gm</h5>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h5>Quality checking</h5>
-                  </td>
-                  <td>
-                    <h5>yes</h5>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h5>Freshness Duration</h5>
-                  </td>
-                  <td>
-                    <h5>03days</h5>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h5>When packeting</h5>
-                  </td>
-                  <td>
-                    <h5>Without touch of hand</h5>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h5>Each Box contains</h5>
-                  </td>
-                  <td>
-                    <h5>60pcs</h5>
-                  </td>
-                </tr>
               </tbody>
             </table>
           </div>

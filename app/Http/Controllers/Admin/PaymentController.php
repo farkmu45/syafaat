@@ -15,8 +15,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        Payment::all();
-        return view
+        return view('admin.payments.index')->withTitle('Payment')->withPayments(Payment::all());
     }
 
     /**
@@ -26,7 +25,7 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.payments.create')->withTitle('Add Payment');
     }
 
     /**
@@ -37,18 +36,14 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $data = $request->validate([
+            'name' => 'required',
+            'account_number' => 'required|numeric'
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Payment  $payment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Payment $payment)
-    {
-        //
+        Payment::create($data);
+
+        return redirect('/admin/payments');
     }
 
     /**
@@ -59,7 +54,7 @@ class PaymentController extends Controller
      */
     public function edit(Payment $payment)
     {
-        //
+        return view('admin.payments.edit')->withTitle('Edit Payment')->withPayment($payment);
     }
 
     /**
@@ -71,7 +66,14 @@ class PaymentController extends Controller
      */
     public function update(Request $request, Payment $payment)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required',
+            'account_number' => 'required|numeric'
+        ]);
+
+        $payment->update($data);
+
+        return redirect('admin/payments');
     }
 
     /**
@@ -82,6 +84,7 @@ class PaymentController extends Controller
      */
     public function destroy(Payment $payment)
     {
-        //
+        $payment->delete();
+        return redirect()->back();
     }
 }

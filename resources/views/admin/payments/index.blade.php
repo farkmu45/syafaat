@@ -15,18 +15,20 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Account Number</th>
                                     <th>Option</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($qurbanItems as $s)
+                                @foreach ($payments as $payment)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td><img width="60" src="{{asset($s->image)}}" alt=""></td>
+                                    <td>{{$payment->name}}</td>
+                                    <td>{{$payment->account_number}}</td>
                                         <td>
-                                            <a href="/admin/sliders/{{$s->id}}/edit" class="btn btn-info"><i class="ti-pencil"></i></a>
-                                            <form action="/admin/sliders/{{$s->id}}" method="POST" class="d-inline">
+                                            <a href="/admin/payments/{{$payment->id}}/edit" class="btn btn-info"><i class="ti-pencil"></i></a>
+                                            <form action="/admin/payments/{{$payment->id}}" method="POST" class="d-inline">
                                                 @method('delete')
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger"><i class="ti-trash"></i></button>
