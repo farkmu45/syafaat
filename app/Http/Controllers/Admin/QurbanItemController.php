@@ -80,9 +80,10 @@ class QurbanItemController extends Controller
      * @param  \App\QurbanItem  $qurbanItem
      * @return \Illuminate\Http\Response
      */
-    public function edit(QurbanItem $qurbanItem)
+    public function edit(QurbanItem $qurban)
     {
-        //
+        $qurbans = Qurban::all();
+        return view('admin.qurbanItems.edit', ['title' => 'Edit Qurbans Items', 'qurbans' => $qurbans, 'qurban' => $qurban]);
     }
 
     /**
@@ -92,9 +93,31 @@ class QurbanItemController extends Controller
      * @param  \App\QurbanItem  $qurbanItem
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, QurbanItem $qurbanItem)
+    public function update(Request $request, QurbanItem $qurban)
     {
-        //
+        \Tinify\setKey("9krHPgyjMb8GlwyZlzjnTNWMfvSbdSxq");
+        $data = $request->validate([
+            'name' => 'required',
+            'qurban_id' => 'required',
+            'weight' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+            'photo' => 'file|between:0,2048|mimes:jpeg,jpg,png',
+        ]);
+
+        if ($request['photo']) {
+            Storage::delete($qurban->photo);
+            $filetype = $request->file('photo')->extension();
+            $source = \Tinify\fromFile($data['photo']);
+            $text = 'optimized' . random_int(100, 100000) . '.' . $filetype;
+            $source->toFile($text);
+            $data['photo'] = Storage::putFile('qurbanItemPhotos', new File(public_path($text)));
+            FacadesFile::delete(public_path($text));
+        }
+
+
+        $qurban->update($data);
+        return redirect('/admin/qurbans')->with('status', 'Qurban Updated');
     }
 
     /**
@@ -103,8 +126,10 @@ class QurbanItemController extends Controller
      * @param  \App\QurbanItem  $qurbanItem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(QurbanItem $qurbanItem)
+    public function destroy(QurbanItem $qurban)
     {
-        //
+        Storage::delete($qurban->photo);
+        $qurban->delete();
+        return redirect('/admin/qurbans')->with('status', 'Qurban Deleted');
     }
 }

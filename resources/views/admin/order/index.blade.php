@@ -6,7 +6,7 @@
     @include('admin.templates.heading')
 
     <div class="row justify-content-center">
-        <div class="col-10">
+        <div class="col-12">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Data {{$title}}</h4>
@@ -15,32 +15,34 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Foto</th>
-                                    <th>Jenis</th>
-                                    <th>Judul</th>
-                                    <th>Harga</th>
-                                    <th>Berat</th>
-                                    <th>Deskripsi</th>
+                                    <th>Code</th>
+                                    <th>Username</th>
+                                    <th>User Email</th>
+                                    <th>User Telepon</th>
+                                    <th>Atas Nama</th>
+                                    <th>Payment Name</th>
+                                    <th>Account Number</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
                                     <th>Option</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($qurbanItems as $s)
+                                @foreach ($order as $s)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td><img width="60" src="{{asset($s->photo)}}" alt=""></td>
-                                        <td>{{$s->qurban->name}}</td>
-                                        <td>{{$s->name}}</td>
-                                        <td>{{$s->price}}</td>
-                                        <td>{{$s->weight}}</td>
+                                        <td>{{$s->code}}</td>
+                                        <td>{{$s->username}}</td>
+                                        <td>{{$s->email}}</td>
+                                        <td>{{$s->phone}}</td>
+                                        <td>{{$s->behalf}}</td>
+                                        <td>{{$s->payment->name}}</td>
+                                        <td>{{$s->payment->account_number}}</td>
+                                        <td>{{$s->total}}</td>
+                                        <td>{{$s->status}}</td>
                                         <td>{{$s->description}}</td>
                                         <td>
-                                            <a href="/admin/qurbans/{{$s->id}}/edit" class="btn btn-info"><i class="ti-pencil"></i></a>
-                                            <form action="/admin/qurbans/{{$s->id}}" method="POST" class="d-inline">
-                                                @method('delete')
-                                                @csrf
-                                                <button type="submit" class="btn btn-danger"><i class="ti-trash"></i></button>
-                                            </form>
+                                            <a href="/admin/orders/{{$s->id}}/edit" class="btn btn-info"><i class="ti-pencil"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

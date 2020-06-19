@@ -114,6 +114,8 @@ class SliderController extends Controller
      */
     public function destroy(Slider $slider)
     {
-        //
+        Storage::delete($slider->photo);
+        $slider->delete();
+        return redirect('/admin/sliders')->with('status', 'Slider Deleted');
     }
 }
