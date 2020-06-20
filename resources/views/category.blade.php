@@ -100,11 +100,12 @@
                                 </div>
                                 <div class="single_product_menu d-flex">
                                     <h5>Urut : </h5>
-                                    <select>
-                                        <option data-display="Pilih">Urut Berdasarkan</option>
-                                        <option value="1">Harga Tertinggi</option>
-                                        <option value="2">Harga Terendah</option>
+                                    <form action="/qurban" method="GET">
+                                    <select name="sort_price" onchange="this.form.submit()">
+                                        <option value="1" {{request()->sort_price == '1' || !request()->sort_price ? 'selected' : ''}}>Harga Tertinggi</option>
+                                        <option value="2" {{request()->sort_price == '2' ? 'selected' : ''}}>Harga Terendah</option>
                                     </select>
+                                    </form>
                                 </div>
                             </div>
                         </div>

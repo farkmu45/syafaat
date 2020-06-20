@@ -1,6 +1,5 @@
 TINIFY_KEY=9krHPgyjMb8GlwyZlzjnTNWMfvSbdSxq
 
-DB_CONNECTION=mysql
 DB_HOST=sql123.main-hosting.eu
 DB_PORT=3306
 DB_DATABASE=u732865855_syafaat

@@ -31,12 +31,23 @@ class FrontEndController extends Controller
             $list->where('qurban_id', $request->type);
         }
 
+        if ($request->has('sort_price')) {
+            if ($request->sort_price == '1') {
+                $list->orderBy('price', 'desc');
+            } else {
+                $list->orderBy('price', 'asc');
+            }
+        }
+
+        $list->orderBy('price','desc');
+
         return view('category')->withList($list->paginate(9))->withQurban($qurban)->withCount($countItem);
     }
 
     public function show(QurbanItem $qurban)
     {
-        return view('single-product')->withQurban($qurban);
+        $items = QurbanItem::all()->random(2);
+        return view('single-product')->withQurban($qurban)->withItems($items);
     }
 
     public function cart(Request $request)
@@ -215,10 +226,5 @@ class FrontEndController extends Controller
             return redirect('/checkout');
         }
         return redirect()->back();
-    }
-    
-    public function delete(Request $request)
-    {
-        
     }
 }

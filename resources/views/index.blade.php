@@ -55,7 +55,7 @@
                         
                         @foreach ($slider as $slider)     
                         <div class="single_banner_slider" style="height: 100% !important">
-                            <img src="{{asset($slider->photo)}}" style="width: 100%; height:100%; margin-top: 250px; object-fit:cover" alt="">
+                            <img src="{{asset($slider->image)}}" style="width: 100%; height:100%; margin-top: 200px; object-fit:cover" alt="">
                         </div>
                         @endforeach
                         @endif
@@ -133,7 +133,7 @@
               <img src="{{asset($qurban->photo)}} " alt="" style="height: 190px; width:100%; object-fit:cover">
               <div class="single_product_text">
               <h4>{{$qurban->name}}</h4>
-                <h3>{{$qurban->price}}</h3>
+                <h3>{{"Rp " . number_format($qurban->price,0,',','.')}}</h3>
               </div>
             </div>
             @endforeach

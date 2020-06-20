@@ -26,7 +26,6 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'FrontEndController@index');
 
@@ -36,7 +35,6 @@ Route::post('/qurban/{qurban}', 'FrontEndController@saveToCart');
 
 Route::get('/cart', 'FrontEndController@cart');
 Route::patch('/cart', 'FrontEndController@editCart');
-Route::delete('/cart/{cart_id}', 'FrontEndController@delete');
 
 Route::get('/checkout', 'FrontEndController@checkout');
 Route::post('/checkout', 'FrontEndController@processCheckout');

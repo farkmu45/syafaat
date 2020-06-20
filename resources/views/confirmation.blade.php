@@ -43,8 +43,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="confirmation_tittle">
-                        <span>Terima Kasih. Pesanan anda akan kami proses. <br>Harap lakukan transfer uang sesuai total harga pesanan ke rekening dibawah</span>
+                    <div class="confirmation_tittle d-flex flex-column justify-content-center align-items-center">
+                        <span>Terima Kasih. Pesanan anda akan kami proses. <br>Harap lakukan transfer uang sesuai total harga pesanan ke rekening dibawah<br>Catat kode pesanan anda untuk tracking</span>
+                        <button data-clipboard-target="#target" class="button mt-5" style="display: block" id="copy">Salin Kode</button>
                     </div>
                 </div>
                 <div class="col-lg-6 col-lx-4">
@@ -52,7 +53,7 @@
                         <h4>Detail Pesanan</h4>
                         <ul>
                             <li>
-                                <p>Kode Pesanan :</p> <span>: {{$result->code}}</span>
+                                <p>Kode Pesanan </p> : <span id="target">{{$result->code}}</span>
                             </li>
                             <li>
                                 <p>Nama</p><span>: {{$result->username}}</span>
@@ -100,7 +101,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($result->items as $qurban)    
+                                 @foreach ($result->items as $qurban)    
                                 <tr>
                                 <th colspan="2"><span>{{$qurban->item->name}}</span></th>
                                 <th>x {{$qurban->quantity}}</th>
@@ -165,6 +166,11 @@
     <script src="{{asset('js/price_rangs.js')}}"></script>
     <!-- custom js -->
     <script src="{{asset('js/custom.js')}}"></script>
+    <script src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script>
+
+    <script>
+        new ClipboardJS('#copy');
+    </script>
 </body>
 
 </html>

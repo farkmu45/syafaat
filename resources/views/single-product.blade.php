@@ -158,13 +158,16 @@
         <div class="col-lg-12">
           <div class="best_product_slider owl-carousel">
 
+            @foreach ($items as $item)    
             <div class="single_product_item">
-              <img src="{{asset('img/product/product_5.png')}}" alt="">
+              <img src="{{asset($item->photo)}}" alt="">
               <div class="single_product_text">
-                <h4>Quartz Belt Watch</h4>
-                <h3>$150.00</h3>
+                <h4>{{$item->name}}</h4>
+                <h3>{{"Rp " . number_format($qurban->price,0,',','.')}}</h3>
               </div>
             </div>
+            @endforeach
+
 
           </div>
         </div>
