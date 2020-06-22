@@ -16,10 +16,9 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Code</th>
-                                    <th>Username</th>
-                                    <th>User Email</th>
-                                    <th>User Telepon</th>
-                                    <th>Atas Nama</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Telepon</th>
                                     <th>Payment Name</th>
                                     <th>Account Number</th>
                                     <th>Total</th>
@@ -31,16 +30,15 @@
                                 @foreach ($order as $s)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{$s->code}}</td>
+                                        <td><a href="/admin/orders/{{$s->id}}">{{$s->code}}</a></td>
                                         <td>{{$s->username}}</td>
                                         <td>{{$s->email}}</td>
                                         <td>{{$s->phone}}</td>
-                                        <td>{{$s->behalf}}</td>
                                         <td>{{$s->payment->name}}</td>
                                         <td>{{$s->payment->account_number}}</td>
                                         <td>{{$s->total}}</td>
                                         <td>{{$s->status}}</td>
-                                        <td>{{$s->description}}</td>
+                                        {{-- <td>{{$s->description}}</td> --}}
                                         <td>
                                             <a href="/admin/orders/{{$s->id}}/edit" class="btn btn-info"><i class="ti-pencil"></i></a>
                                         </td>

@@ -61,7 +61,7 @@
                         <br>
                         Agar proses verifikasi lebih cepat, Harap upload bukti pembayaran 
                     </div>
-                    <a href="https://wa.me/6282230634412" class="button mb-4">Upload Bukti Pembayaran</a>
+                    <a href="https://wa.me/6281311000300" class="button mb-4">Upload Bukti Pembayaran</a>
                     @elseif($order->status == 2)
                     <div class="alert alert-warning" role="alert">
                         Pesanan anda sedang kami proses. Harap tunggu ya :)    

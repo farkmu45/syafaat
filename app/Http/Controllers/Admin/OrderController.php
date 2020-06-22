@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\OrderItems;
 use App\Payment;
 use Illuminate\Http\Request;
 
@@ -50,7 +51,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        return view('admin.order.detail')->withOrder($order->items)->withTitle('Detail Order');
     }
 
     /**
@@ -61,7 +62,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        //
+        return view('admin.order.edit')->withTitle('Edit Order')->withOrder($order)->withPayment(Payment::all())->withOrderItem(OrderItems::all());
     }
 
     /**
@@ -73,7 +74,17 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        $data = $request->validate([
+            'username' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'payment_id' => 'required',
+            'status' => 'required',
+        ]);
+
+
+        $order->update($data);
+        return redirect('/admin/orders')->with('status', 'Orders Updated');
     }
 
     /**

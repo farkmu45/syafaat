@@ -15,7 +15,7 @@ class AddMoreFieldToOrdersItems extends Migration
     {
         Schema::table('orders_items', function (Blueprint $table) {
             $table->unsignedBigInteger('quantity');
-            $table->string('behalf_of',100);
+            $table->string('behalf_of',100)->nullable();
         });
     }
 
