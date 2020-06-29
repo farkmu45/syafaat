@@ -12,12 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/dashboard', 'Admin\AdminController@index');
     Route::resource('/sliders', 'Admin\SliderController');
     Route::resource('/qurbans', 'Admin\QurbanItemController');
@@ -25,8 +20,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/orders', 'Admin\OrderController');
 });
 
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes(['verify' => false, 'register' => false, 'reset' => false]);
+
+
 Route::get('/', 'FrontEndController@index');
 
 Route::get('/qurban', 'FrontEndController@list');
