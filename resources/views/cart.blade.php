@@ -49,7 +49,7 @@
                                 <th scope="col">Qurban</th>
                                 <th scope="col">Harga</th>
                                 <th scope="col">Jumlah</th>
-                                <th scope="col">Atas Nama</th>
+                                <th scope="col">Atas Nama<b> *Wajib diisi</b></th>
                                 <th scope="col">Total</th>
                                 <th scope="col">Opsi</th>
                             </tr>
@@ -82,7 +82,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                    <input class="form-control" type="text" name="behalf_of[]" required value="{{$qurban->behalf_of}}" placeholder="" id="">
+                                    <input class="form-control" type="text" required name="behalf_of[]" required value="{{$qurban->behalf_of}}" placeholder="" id="">
                                     </td>
                                 
                                 <td>

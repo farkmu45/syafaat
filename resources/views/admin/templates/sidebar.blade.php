@@ -19,12 +19,12 @@
                         <li><a href="/admin/dashboard">Home</a></li>
                     </ul>
                 </li>
-                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-camera-burst"></i><span class="hide-menu">Slider</span></a>
+                {{-- <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-camera-burst"></i><span class="hide-menu">Slider</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="/admin/sliders">All Slider</a></li>
                         <li><a href="/admin/sliders/create">Add Slider</a></li>
                     </ul>
-                </li>
+                </li> --}}
                 <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-buffer"></i><span class="hide-menu">Qurban</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="/admin/qurbans">All Qurban</a></li>

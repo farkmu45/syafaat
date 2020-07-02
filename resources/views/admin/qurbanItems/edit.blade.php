@@ -52,7 +52,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group @error('weight') has-danger @enderror">
                                         <label class="control-label">Berat Qurban</label>
-                                        <input type="number" id="firstName" name="weight" class="form-control @error('weight') form-control-danger @enderror" placeholder="Dalam satuan kg." value="{{ $qurban->weight }}">
+                                        <input type="text" id="firstName" name="weight" class="form-control @error('weight') form-control-danger @enderror" placeholder="Dalam satuan kg." value="{{ $qurban->weight }}">
                                         @error('weight')
                                             <small class="form-control-feedback">{{$message}}</small>
                                         @enderror

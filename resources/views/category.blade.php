@@ -120,6 +120,7 @@
                                 <div class="single_product_text">
                                     <h4>{{$qurban->name}}</h4>
                                     <h3>{{"Rp " . number_format($qurban->price,0,',','.')}}</h3>
+                                    <p>Berat : {{$qurban->weight}}kg</p>
                                 <form action="/qurban/{{$qurban->id}}" id="qurban{{$qurban->id}}" method="post">
                                         @csrf
                                         <input type="hidden" name="name" value="{{$qurban->name}}">

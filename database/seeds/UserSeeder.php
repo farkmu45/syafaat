@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     {
         User::create([
             'name' => 'Admin',
-            'email' => 'admin@syafaat.com',
+            'email' => 'admin@safaat.com',
             'password' => Hash::make('konek.space')
         ]);
     }
