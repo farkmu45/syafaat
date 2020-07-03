@@ -82,7 +82,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                    <input class="form-control" type="text" required name="behalf_of[]" required value="{{$qurban->behalf_of}}" placeholder="" id="">
+                                    <input class="form-control" type="text" name="behalf_of[]" required value="{{$qurban->behalf_of}}" placeholder="" id="">
                                     </td>
                                 
                                 <td>

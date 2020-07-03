@@ -93,7 +93,7 @@
                     <!-- ============================================================== -->
                     <ul class="navbar-nav my-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link text-muted waves-effect waves-dark" href="#" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-power"></i>
+                            <a class="nav-link text-muted waves-effect waves-dark" href="/logout" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-power"></i>
                             </a>
                         </li>
                     </ul>
