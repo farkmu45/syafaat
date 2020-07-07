@@ -78,11 +78,11 @@
                                 
                                     <td>
                                         <div class="product_count">
-                                            <input class="input-number" name="quantity[]" required type="number" value="{{$qurban->quantity}}">
+                                            <input class="input-number" name="quantity[]" type="number" value="{{$qurban->quantity}}">
                                         </div>
                                     </td>
                                     <td>
-                                    <input class="form-control" type="text" name="behalf_of[]" required value="{{$qurban->behalf_of}}" placeholder="" id="">
+                                    <input class="form-control" type="text" name="behalf_of[]" value="{{$qurban->behalf_of}}" placeholder="" id="">
                                     </td>
                                 
                                 <td>

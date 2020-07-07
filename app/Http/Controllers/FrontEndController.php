@@ -67,7 +67,6 @@ class FrontEndController extends Controller
                 Cookie::queue(Cookie::forget('qurban'));
                 return redirect('/cart');
             }
-
             Cookie::queue('qurban',json_encode($temp));
 
             return redirect('/cart');
