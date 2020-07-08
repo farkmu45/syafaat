@@ -208,7 +208,7 @@ class FrontEndController extends Controller
 
     public function editCart(Request $request)
     {
-        $temp = [];
+        $data = [];
         $data = json_decode(Cookie::get('qurban'), true);
         
         foreach ($request->behalf_of as $key => $value) {
@@ -220,8 +220,6 @@ class FrontEndController extends Controller
             $data[$key]['total_price'] = $data[$key]['price'] * $data[$key]['quantity'];
         }
         
-
-        dd($data);
         Cookie::queue('qurban', json_encode($data));
         if ($request->checkout == "true") {
             return redirect('/checkout');

@@ -55,7 +55,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <form action="/cart/" method="post" id="edit">
+                            <form action="cart" method="post" id="edit">
                                 @csrf
                                 @method('PATCH')
                                 <input type="hidden" id="checkout" name="checkout" value="false">
