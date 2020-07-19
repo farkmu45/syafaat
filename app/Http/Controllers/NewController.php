@@ -5,54 +5,29 @@ namespace App\Http\Controllers;
 use App\Order;
 use App\OrderItems;
 use App\Payment;
-use App\Qurban;
 use App\QurbanItem;
-use App\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 
-class FrontEndController extends Controller
+class NewController extends Controller
 {
     public function index()
     {
-        $slider = Slider::all();
-        return view('index')->withList(QurbanItem::all())->withSlider($slider);
+        $qurban = QurbanItem::all();
+        return view('new.index', compact('qurban'));
     }
 
-    public function list(Request $request)
+    public function show($name)
     {
-        $qurban = Qurban::withCount('items')->get();
-
-        $list = QurbanItem::where('id', '!=', 0);
-
-        $countItem = QurbanItem::all()->count();
-
-        if ($request->has('type')) {
-            $list->where('qurban_id', $request->type);
-        }
-
-        if ($request->has('sort_price')) {
-            if ($request->sort_price == '1') {
-                $list->orderBy('price', 'desc');
-            } else {
-                $list->orderBy('price', 'asc');
-            }
-        }
-
-        $list->orderBy('price','desc');
-
-        return view('category')->withList($list->paginate(9))->withQurban($qurban)->withCount($countItem);
-    }
-
-    public function show(QurbanItem $qurban)
-    {
-        $items = QurbanItem::all()->random(2);
-        return view('single-product')->withQurban($qurban)->withItems($items);
+        $qurban = QurbanItem::where('name', $name)->first();
+        return view('new.detail', compact('qurban'));
     }
 
     public function cart(Request $request)
     {
         $temp = [];
+
+        $payments = Payment::all();
 
         if ($request->has('order_id')) {
             $data = json_decode(Cookie::get('qurban'), true);
@@ -65,12 +40,12 @@ class FrontEndController extends Controller
 
             if (sizeof($temp) == 0) {
                 Cookie::queue(Cookie::forget('qurban'));
-                return redirect('/cart');
+                return redirect('/baru/keranjang');
             }
 
             Cookie::queue('qurban',json_encode($temp));
 
-            return redirect('/cart');
+            return redirect('/baru/keranjang');
         }
 
 
@@ -78,7 +53,7 @@ class FrontEndController extends Controller
         $data = json_decode(Cookie::get('qurban'), true);
 
         if (!Cookie::get('qurban')) {
-            return view('cart');
+            return view('new.cart');
         }
 
         foreach ($data as $key => $data) {
@@ -88,7 +63,7 @@ class FrontEndController extends Controller
         $data =
             json_decode(Cookie::get('qurban'));
 
-        return view('cart')->withData($data)->withTotal($total_price);
+        return view('new.cart', compact('payments'))->withData($data)->withTotal($total_price);
     }
 
     public function checkout(Request $request)
@@ -103,18 +78,22 @@ class FrontEndController extends Controller
         $total_price = 0;
         $data = json_decode(Cookie::get('qurban'), true);
 
+        foreach ($request->behalf_of as $key => $value) {
+            $data[$key]['behalf_of'] = $value;
+        }
+
+        foreach ($request->quantity as $key => $value) {
+            $data[$key]['quantity'] = $value;
+            $data[$key]['total_price'] = $data[$key]['price'] * $data[$key]['quantity'];
+        }
+        
+        Cookie::queue('qurban', json_encode($data));
+
         foreach ($data as $key => $data) {
             $total_price += $data['total_price'];
         }
-        $data =
-            json_decode(Cookie::get('qurban'));
-        return view('checkout')->withData($data)->withTotal($total_price)->withPayments($payments);
-    }
+        $data = json_decode(Cookie::get('qurban'));
 
-    public function processCheckout(Request $request)
-    {
-
-        
         if (!Cookie::get('qurban')) {
             return redirect('/qurban');
         }
@@ -155,18 +134,9 @@ class FrontEndController extends Controller
             ]);
         }
 
-        Cookie::queue(Cookie::forget('qurban'));
-        return view('/confirmation')->withResult($result)->withUnique($unique);
-    }
+        return ['data' => $data, 'total' => $total_price, 'payments' => $payments];
 
-    public function check(Request $request)
-    {
-        if ($request->has('order_id')) {
-            return view('check')->withOrder(Order::where('code', $request->order_id)->first());
-        } else {
-            return view('check')->withOrder(0);
-        }
-        
+        // return view('checkout')->withData($data)->withTotal($total_price)->withPayments($payments);
     }
 
     public function saveToCart(Request $request)
@@ -207,27 +177,6 @@ class FrontEndController extends Controller
 
         Cookie::queue('qurban', $temp);
 
-        return redirect('cart');
-    }
-
-    public function editCart(Request $request)
-    {
-        $data = array();
-        $data = json_decode(Cookie::get('qurban'), true);
-        
-        foreach ($request->behalf_of as $key => $value) {
-            $data[$key]['behalf_of'] = $value;
-        }
-
-        foreach ($request->quantity as $key => $value) {
-            $data[$key]['quantity'] = $value;
-            $data[$key]['total_price'] = $data[$key]['price'] * $data[$key]['quantity'];
-        }
-        
-        Cookie::queue('qurban', json_encode($data));
-        if ($request->checkout) {
-            return redirect('/checkout');
-        }
-        return redirect()->back();
+        return redirect('baru/keranjang');
     }
 }

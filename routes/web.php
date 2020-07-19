@@ -37,3 +37,11 @@ Route::post('/checkout', 'FrontEndController@processCheckout');
 
 Route::get('/confirmation', 'FrontEndController@confirmation');
 Route::get('/check', 'FrontEndController@check');
+
+
+Route::get('/baru', 'NewController@index');
+Route::get('/baru/qurban/{name}', 'NewController@show');
+Route::post('/baru/qurban/{qurban}', 'NewController@saveToCart');
+Route::get('/baru/keranjang', 'NewController@cart');
+Route::post('/baru/checkout', 'NewController@checkout');
+Route::post('/baru/konfirmasi', 'NewController@confirmation');
