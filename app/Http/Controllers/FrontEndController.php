@@ -67,7 +67,6 @@ class FrontEndController extends Controller
                 Cookie::queue(Cookie::forget('qurban'));
                 return redirect('/cart');
             }
-
             Cookie::queue('qurban',json_encode($temp));
 
             return redirect('/cart');
@@ -212,7 +211,7 @@ class FrontEndController extends Controller
 
     public function editCart(Request $request)
     {
-        $data = array();
+        $data = [];
         $data = json_decode(Cookie::get('qurban'), true);
         
         foreach ($request->behalf_of as $key => $value) {
@@ -225,7 +224,7 @@ class FrontEndController extends Controller
         }
         
         Cookie::queue('qurban', json_encode($data));
-        if ($request->checkout) {
+        if ($request->checkout == "true") {
             return redirect('/checkout');
         }
         return redirect()->back();
