@@ -83,7 +83,7 @@ class QurbanItemController extends Controller
     public function edit(QurbanItem $qurban)
     {
         $qurbans = Qurban::all();
-        return view('admin.qurbanItems.edit', ['title' => 'Edit Qurbans Items', 'qurbans' => $qurbans, 'qurban' => $qurban]);
+        return view('admin.qurbanItems.edit', ['title' => 'Edit Qurbans Items', 'qurbans' => $qurbans, 'item' => $qurban]);
     }
 
     /**

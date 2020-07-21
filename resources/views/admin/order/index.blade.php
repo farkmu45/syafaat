@@ -36,8 +36,16 @@
                                         <td>{{$s->phone}}</td>
                                         <td>{{$s->payment->name}}</td>
                                         <td>{{$s->payment->account_number}}</td>
-                                        <td>{{$s->total}}</td>
-                                        <td>{{$s->status}}</td>
+                                        <td>{{"Rp " . number_format($s->total,0,',','.')}}</td>
+                                        <td>
+                                            @if ($s->status == 1)
+                                                Pending
+                                            @elseif($s->status == 2)
+                                                Proses
+                                            @elseif($s->status == 3)
+                                                Berhasil
+                                            @endif
+                                        </td>
                                         {{-- <td>{{$s->description}}</td> --}}
                                         <td>
                                             <a href="/admin/orders/{{$s->id}}/edit" class="btn btn-info"><i class="ti-pencil"></i></a>

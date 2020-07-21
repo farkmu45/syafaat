@@ -21,9 +21,9 @@
 
 <body>
 
-  @include('new.layouts.navbar')
+  @include('new.layouts.navbar-index')
 
-  <div class="jumbotron jumbotron-fluid header">
+  <div class="jumbotron jumbotron-fluid header" id="home">
     <div class="container">
       <div class="row">
         <div class="col-lg-8">
@@ -62,14 +62,14 @@
       <div class="row mt-4">
         @foreach ($qurban as $q)
         <div class="col-lg-4">
-            <a href="/baru/{{$q->name}}" style="color: black; text-decoration: none;">
+            <a href="/qurban/{{$q->name}}" style="color: black; text-decoration: none;">
                 <div class="card mt-3">
                     <img src="{{asset($q->photo)}}" class="card-img-top" alt="...">
                     <div class="card-body">
                       <div class="row justify-content-between">
                         <div class="col-lg-6 col-sm-6">
                           <h5 class="small">{{$q->name}}</h5>
-                          <p class="text-muted">Berat : {{$q->weight}}</p>
+                          <p class="text-muted">Berat : {{$q->weight}} Kg</p>
                         </div>
                         <div class="col-lg-6 col-sm-6 text-right">
                           <h5 class="small">{{"Rp " . number_format($q->price,0,',','.')}}</h5>

@@ -53,7 +53,7 @@
                                     <div class="form-group row">
                                         <label class="control-label text-right col-md-3">Harga:</label>
                                         <div class="col-md-9">
-                                            <p class="form-control-static"> {{$o->item->price}} </p>
+                                            <p class="form-control-static"> {{"Rp " . number_format($o->item->price,0,',','.')}} </p>
                                         </div>
                                     </div>
                                 </div>

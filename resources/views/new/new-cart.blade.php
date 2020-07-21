@@ -47,7 +47,7 @@
         </div>
     </div>
     @else
-    <form id="checkout" action="/detail" method="post" novalidate="novalidate">
+    <form id="checkout" action="/checkout" method="post" novalidate="novalidate">
         @csrf
         <div class="jumbotron jumbotron-fluid cart bg-light mt-5 mb-0">
             <div class="container">
@@ -67,7 +67,30 @@
                                         </tr>
                                     </thead>
                                     <tbody id="tmpdata">
-                                        
+                                        {{-- @foreach ($data as $key => $qurban)
+                                        <tr>
+                                            <td><img src="{{asset($qurban->photo)}}" width="80" alt=""></td>
+                                            <td>{{$qurban->name}}</td>
+                                            <td>{{"Rp " . number_format($qurban->price,0,',','.')}}</td>
+                                            <td>
+                                                <div class="def-number-input number-input safari_only">
+                                                    <button
+                                                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                                        class="minus" type="button"></button>
+                                                    <input class="quantity" min="1" name="quantity[]" value="{{$qurban->quantity}}" type="number">
+                                                    <button
+                                                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                                        class="plus" type="button"></button>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="input" name="behalf_of[]" required value="{{$qurban->behalf_of}}" placeholder="Nama Pembeli">
+                                            </td>
+                                            <td>
+                                                <a href="/cart?order_id={{$key}}" class="text-danger" style="font-size: 20px !important;"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                        @endforeach --}}
                                     </tbody>
                                 </table>
                             </div>
@@ -113,7 +136,20 @@
                                         </tr>
                                     </thead>
                                     <tbody id="tempatdata">
-                                        
+                                        {{-- @foreach ($data as $key => $qurban)
+                                        <tr>
+                                            <td>{{$qurban->name}}</td>
+                                            <td>x{{$qurban->quantity}}</td>
+                                            <td>{{"Rp " . number_format($qurban->price,0,',','.')}}</td>
+                                        </tr>
+                                        @endforeach
+                                        <tr>
+                                            <td>Total</td>
+                                            <td></td>
+                                            <td class="text-primary font-weight-bold">
+                                                {{"Rp " . number_format($qurban->total_price,0,',','.' )}}
+                                            </td>
+                                        </tr> --}}
                                     </tbody>
                                 </table>
                                 <button type="submit" class="btn btn-success btn-2 mt-2 button">Proses Pembayaran</button>
@@ -133,8 +169,8 @@
         window.addEventListener("load", function(event){
             loadData();
         })
-        var data = <?php echo json_encode($data ?? ''); ?>;
-        console.log("data",data);
+        console.log("ter");
+        var data = <?php echo json_encode($data); ?>;
         //  data = JSON.parse(data);
         function loadData() {
             var html='';
@@ -143,9 +179,9 @@
             data.forEach((element, index) => {
                 html+="<tr><td>"+element.name+"</td><td>"+element.name+"</td>";
                 html+="<td>"+formatRupiah(element.price.toString())+"</td>";
-                html+="<td><div class='def-number-input number-input safari_only'><button onclick='minus("+ index +")' class='minus' type='button'></button><input type='hidden' name='qurban_id[]' value='"+element.qurban_id+"' /><input type='number' name='qty[]' value='"+element.quantity.toString()+"' />";
+                html+="<td><div class='def-number-input number-input safari_only'><button onclick='minus("+ index +")' class='minus' type='button'></button>"+ element.quantity;
                 html+="<button onclick='tambah("+ index +")' class='plus' type='button'></button></div></td>";
-                html+="<td><input type='text' class='input' name='nama_pembeli[]' required placeholder='Nama Pembeli'></td><td></td>";
+                html+="<td><input type='text' class='input' name='behalf_of[]' required placeholder='Nama Pembeli'></td><td></td>";
                 html+="<td><a href='#' onclick='hapus("+index+")' class='text-danger' style='font-size: 20px !important;'><i class='fa fa-trash'></i></a></tr>";
                 total += element.total_price; 
 
@@ -155,7 +191,7 @@
             rincian+= "<tr><td>Total</td><td></td><td class='text-primary font-weight-bold'>"+ formatRupiah(total.toString()) +"</td></tr>";
             document.getElementById("tmpdata").innerHTML = html;
             document.getElementById("tempatdata").innerHTML = rincian;
-            console.log("data", data);
+            console.log("gg",data);
         }
 
         function formatRupiah(angka){
@@ -188,28 +224,7 @@
             });
             data = tmp;
             loadData();
-            postcart();
-        }
-
-        
-        function customQty(isi, urutan) {
-            console.log(isi);
-            if(parseInt(isi) >= 1){
-
-                var tmp = [];
-            data.forEach((element, index) => {
-                if(urutan == index) {
-                    element['quantity'] = parseInt(element.quantity) + 1;
-                    element['total_price'] = parseInt(element.quantity) * element.price;
-                    tmp.push(element);
-                } else {
-                    tmp.push(element)
-                }
-            });
-            data = tmp;
-            loadData();
-            postcart();
-            }
+            // postcart();
         }
 
         function minus(urutan) {
@@ -232,16 +247,16 @@
             loadData();
         }
 
-        function postcart() {
-            $.ajax({
-                type: "POST",
-                url: '/api/updatecart',
-                data: {
-                    data: data,
-                    _token: '{{ csrf_token() }}'
-                }
-            });
-        }
+        // function postcart() {
+        //     console.log(data);
+        //     $.ajax({
+        //         type: "POST",
+        //         url: '/api/updatecart',
+        //         data: {
+        //             data:data
+        //         }
+        //     });
+        // }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>

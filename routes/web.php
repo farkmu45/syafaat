@@ -23,25 +23,27 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 Auth::routes(['verify' => false, 'register' => false, 'reset' => false]);
 
 
-Route::get('/', 'FrontEndController@index');
+// Route::get('/', 'FrontEndController@index');
 
-Route::get('/qurban', 'FrontEndController@list');
-Route::get('/qurban/{qurban}', 'FrontEndController@show');
-Route::post('/qurban/{qurban}', 'FrontEndController@saveToCart');
+// Route::get('/qurban', 'FrontEndController@list');
+// Route::get('/qurban/{qurban}', 'FrontEndController@show');
+// Route::post('/qurban/{qurban}', 'FrontEndController@saveToCart');
 
-Route::get('/cart', 'FrontEndController@cart');
-Route::patch('/cart', 'FrontEndController@editCart');
+// Route::get('/cart', 'FrontEndController@cart');
+// Route::patch('/cart', 'FrontEndController@editCart');
 
-Route::get('/checkout', 'FrontEndController@checkout');
-Route::post('/checkout', 'FrontEndController@processCheckout');
+// Route::get('/checkout', 'FrontEndController@checkout');
+// Route::post('/checkout', 'FrontEndController@processCheckout');
 
-Route::get('/confirmation', 'FrontEndController@confirmation');
-Route::get('/check', 'FrontEndController@check');
+// Route::get('/confirmation', 'FrontEndController@confirmation');
+// Route::get('/check', 'FrontEndController@check');
 
 
-Route::get('/baru', 'NewController@index');
-Route::get('/baru/qurban/{name}', 'NewController@show');
-Route::post('/baru/qurban/{qurban}', 'NewController@saveToCart');
-Route::get('/baru/keranjang', 'NewController@cart');
-Route::post('/baru/checkout', 'NewController@checkout');
-Route::post('/baru/konfirmasi', 'NewController@confirmation');
+Route::get('/', 'NewController@index');
+Route::get('/qurban', 'NewController@list');
+Route::get('/qurban/{name}', 'NewController@show');
+Route::post('/qurban/{qurban}', 'NewController@saveToCart');
+Route::get('/cart', 'NewController@cart');
+Route::get('/faq', 'NewController@faq');
+Route::post('/detail', 'NewController@checkout');
+// Route::post('/confirmation', 'NewController@confirmation');

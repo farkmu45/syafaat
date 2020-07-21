@@ -31,9 +31,9 @@
                                         <td><img width="60" src="{{asset($s->photo)}}" alt=""></td>
                                         <td>{{$s->qurban->name}}</td>
                                         <td>{{$s->name}}</td>
-                                        <td>{{$s->price}}</td>
+                                        <td>{{"Rp " . number_format($s->price,0,',','.')}}</td>
                                         <td>{{$s->weight}}</td>
-                                        <td>{{$s->description}}</td>
+                                        <td>{!!$s->description!!}</td>
                                         <td>
                                             <a href="/admin/qurbans/{{$s->id}}/edit" class="btn btn-info"><i class="ti-pencil"></i></a>
                                             <form action="/admin/qurbans/{{$s->id}}" method="POST" class="d-inline">

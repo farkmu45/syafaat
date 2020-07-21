@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('admin/assets/images/favicon.png')}}">
-    <title>Star Properti | {{$title}}</title>
+    <title>Safaat | {{$title}}</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('admin/assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Dropify CSS -->
@@ -93,8 +93,13 @@
                     <!-- ============================================================== -->
                     <ul class="navbar-nav my-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link text-muted waves-effect waves-dark" href="/logout" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-power"></i>
+                            <a class="nav-link text-muted waves-effect waves-dark" href="{{ route('logout') }}" aria-haspopup="true" aria-expanded="false" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();"> <i class="mdi mdi-power"></i>
                             </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </li>
                     </ul>
                 </div>

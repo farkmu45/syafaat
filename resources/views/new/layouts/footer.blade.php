@@ -20,9 +20,9 @@
       </div>
       <div class="col-lg-4">
         <h4>Pusat Bantuan</h4>
-        <a href="">FAQ</a> <br>
-        <a href="">Syarat & Ketentuan</a> <br>
-        <a href="">Hukum Qurban & Aqiqah</a> <br>
+        <a href="/faq">FAQ</a> <br>
+        <a href="#">Syarat & Ketentuan</a> <br>
+        <a href="#">Hukum Qurban & Aqiqah</a> <br>
       </div>
     </div>
   </div>
@@ -32,13 +32,18 @@
   <div class="container">
     <div class="row text">
       <div class="col-lg-6 col-md-12 justify-content-between">
-        <p>Copyright ©2020 All rights reserved | <a href="https://primaitech.id">Prima Itech</a></p>
+        <p>Copyright ©2020 All rights reserved | <a target="_blank" href="https://primaitech.id">Prima Itech</a></p>
       </div>
       <div class="col-lg-6 col-md-12 text-right">
-        <a href=""><i class="fab fa-facebook" aria-hidden="true"></i></a>
-        <a href=""><i class="fab fa-twitter" aria-hidden="true"></i></a>
-        <a href=""><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        <a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+        <a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
+</div>
+
+<div class="icon">
+  <a href="https://api.whatsapp.com/send?phone=+6281311000300" target="_blank" class="position-fixed" style="right: 30px; bottom: 15px; z-index: 99;"><img
+     src="https://primaland.id/assets/wa.png" width="55"></a>
 </div>

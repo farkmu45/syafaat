@@ -8,11 +8,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
-                <a class="nav-item nav-link active" href="/">Beranda</a>
-                <a class="nav-item nav-link" href="/#daftarharga">Daftar Harga</a>
-                <a class="nav-item nav-link" href="/#kelebihan">Kelebihan</a>
-                <a class="nav-item nav-link" href="/#alasan">Alasan</a>
-                <a class="nav-item nav-link" href="/#blog">Blog</a>
+                <a class="nav-item nav-link active" href="#home">Beranda</a>
+                <a class="nav-item nav-link" href="#daftarharga">Daftar Harga</a>
+                <a class="nav-item nav-link" href="#kelebihan">Kelebihan</a>
+                <a class="nav-item nav-link" href="#alasan">Alasan</a>
+                <a class="nav-item nav-link" href="#blog">Blog</a>
                 <a class="nav-item nav-link" href="/faq">Faq</a>
                 <a class="nav-item nav-link cart" href="/cart"><i class="fa fa-shopping-cart"></i></a>
             </div>

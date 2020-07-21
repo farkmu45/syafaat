@@ -44,14 +44,14 @@
                             </div>
                             <p>Berat : {{$qurban->weight}}</p>
                             <p>Kuantitas : </p>
-                            <form action="/baru/qurban/{{$qurban->id}}" method="post">
+                            <form action="/qurban/{{$qurban->id}}" method="post">
                                 <div class="def-number-input number-input safari_only">
-                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" type="button" class="minus"></button>
-                                    <input class="quantity" min="1" name="quantity" value="1" type="number">
-                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp();" type="button" class="plus"></button>
+                                    <button onclick="Minus()" type="button" class="minus"></button>
+                                    <input id="quantity" class="quantity" min="1" name="quantity" value="1" type="number">
+                                    <button onclick="Tambah()" type="button" class="plus"></button>
                                 </div>
                                 <p class="mt-3">Harga :</p>
-                                <h2 class="mb-2">{{"Rp " . number_format($qurban->price,0,',','.')}}</h2>
+                                <h2 class="mb-2" id="total">{{"Rp " . number_format($qurban->price,0,',','.')}}</h2>
                                 
                                 @csrf
                                 <input type="hidden" name="name" value="{{$qurban->name}}">
@@ -89,6 +89,43 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
+    <script>
+        var harga = <?php echo $qurban->price; ?>;
+        var quantity = 1;
+        
+        function Tambah() {
+            quantity++;
+            var total = quantity * harga;
+            document.getElementById('total').innerHTML = formatRupiah(total.toString());
+            document.getElementById('quantity').value = quantity;
+        }
+
+        function Minus() {
+            if(quantity > 1) {
+                quantity--;
+                var total = quantity * harga;
+                document.getElementById('total').innerHTML = formatRupiah(total.toString());
+                document.getElementById('quantity').value = quantity;
+            }
+        }
+
+        function formatRupiah(angka){
+			var number_string = angka.replace(/[^,\d]/g, '').toString(),
+			split   		= number_string.split(','),
+			sisa     		= split[0].length % 3,
+			rupiah     		= split[0].substr(0, sisa),
+			ribuan     		= split[0].substr(sisa).match(/\d{3}/gi);
+
+			// tambahkan titik jika yang di input sudah menjadi angka ribuan
+			if(ribuan){
+				separator = sisa ? '.' : '';
+				rupiah += separator + ribuan.join('.');
+			}
+
+			rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+			return "Rp " + rupiah;
+		}
+    </script>
 </body>
 
 </html>
