@@ -141,18 +141,18 @@
             var rincian = '';
             var total=0;
             data.forEach((element, index) => {
-                html+="<tr><td>"+element.name+"</td><td>"+element.name+"</td>";
+                html+="<tr><td><img src='https://safaat.com//"+ element.photo +"' width='80'></td><td>"+element.name+"</td>";
                 html+="<td>"+formatRupiah(element.price.toString())+"</td>";
                 html+="<td><div class='def-number-input number-input safari_only'><button onclick='minus("+ index +")' class='minus' type='button'></button><input type='hidden' name='qurban_id[]' value='"+element.qurban_id+"' /><input type='number' name='qty[]' value='"+element.quantity.toString()+"' />";
                 html+="<button onclick='tambah("+ index +")' class='plus' type='button'></button></div></td>";
-                html+="<td><input type='text' class='input' name='nama_pembeli[]' required placeholder='Nama Pembeli'></td><td></td>";
+                html+="<td><input type='text' class='input' name='nama_pembeli[]' required placeholder='Nama Pembeli'></td>";
                 html+="<td><a href='#' onclick='hapus("+index+")' class='text-danger' style='font-size: 20px !important;'><i class='fa fa-trash'></i></a></tr>";
                 total += element.total_price; 
 
                 rincian+= "<tr><td>"+ element.name +"</td><td>"+ element.quantity +"</td>" +
                           "<td>" + formatRupiah(element.total_price.toString()) +"</td></tr>";
             });
-            rincian+= "<tr><td>Total</td><td></td><td class='text-primary font-weight-bold'>"+ formatRupiah(total.toString()) +"</td></tr>";
+            rincian+= "<tr><td>Total</td><td></td><td class='text-primary font-weight-bold text-center'>"+ formatRupiah(total.toString()) +"</td></tr>";
             document.getElementById("tmpdata").innerHTML = html;
             document.getElementById("tempatdata").innerHTML = rincian;
             console.log("data", data);
