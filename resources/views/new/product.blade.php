@@ -28,7 +28,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             @foreach ($qurban as $qurban)
-                            <form action="/baru/qurban" id="{{$qurban->id}}" method="get">
+                            <form action="/qurban" id="{{$qurban->id}}" method="get">
                                 <input type="hidden" name="type" value="{{$qurban->id}}">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="{{$qurban->id}}" id="{{$qurban->id}}">
