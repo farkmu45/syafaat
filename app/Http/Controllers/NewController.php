@@ -16,7 +16,7 @@ class NewController extends Controller
 {
     public function index()
     {
-        $qurban = QurbanItem::all();
+        $qurban = QurbanItem::take(3)->get();
         return view('new.index', compact('qurban'));
     }
 
