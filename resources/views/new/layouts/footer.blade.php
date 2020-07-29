@@ -13,9 +13,17 @@
         <h4>Info Kontak</h4>
         <p>
           <b>Alamat :</b> <br>
-          Jln. Trunojoyo No 36, 62285, Bondowoso, Jawa Timur, Indonesia <br>
-          <b>Telp:</b> +62 89 996 128 33 <br>
-          <b>Email:</b> <span>dc.project08@gmail.com</span>
+          Yayasan Asy syafaat Almubarokah
+          Masjid peradaban Asy syafaat
+          Hunian islami de prima tunggulwulung kavling B06.
+          Kelurahan tunggulwulung 
+          Kecamatan Lowokwaru
+          Kota malang. 
+          <br>
+          <b>Call Center :</b> 0813-1100-0300 <br>
+          <b>Pengesahan : </b> <br>
+          Yayasan Asy Syafaat Yang telah disahkan oleh Notaris M Zainul Arief S.H, M. Kn, <br>
+          No. AHU.0469.AH.02.01 tanggal 28 Januari 2010
         </p>
       </div>
       <div class="col-lg-4">
